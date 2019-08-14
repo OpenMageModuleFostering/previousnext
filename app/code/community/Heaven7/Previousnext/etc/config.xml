@@ -51,7 +51,7 @@
                                 <config>
                                     <children>
                                         <heaven7_previousnext>
-                                            <title>Heaven7 Previous Next Product</title>
+                                            <title>Heaven7 Extended Previous Next Product</title>
                                         </heaven7_previousnext>
                                     </children>
                                 </config>
@@ -65,7 +65,7 @@
                 <modules>
                     <Heaven7_Previousnext>
                         <files>
-                            <default>Heaven7_Previousnext.csv</default>
+                            <default>Heaven7_Extendedpreviousnext.csv</default>
                         </files>
                     </Heaven7_Previousnext>
                 </modules>

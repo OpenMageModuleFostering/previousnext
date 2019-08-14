@@ -5,7 +5,6 @@
  *
  * @author Fehérdi Lóránd <feherdi.lorand@gmail.com>
  */
-
 class Heaven7_Previousnext_Model_Type{
 
 	public function toOptionArray(){

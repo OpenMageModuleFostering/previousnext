@@ -6,14 +6,15 @@ class Heaven7_Previousnext_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getPreviousProduct()
 	{
-		$prodId = Mage::registry('current_product')->getId();
-		$positions = Mage::getSingleton('core/session')->getInchooFilteredCategoryProductCollection();
-		if (!$positions && method_exists(Mage::registry('current_category'), 'getProductsPosition')) {
-			$positions = array_reverse(array_keys(Mage::registry('current_category')->getProductsPosition()));
+		$product_id = Mage::registry('current_product')->getId();
+		if (method_exists(Mage::registry('current_category'), 'getId')
+                && method_exists(Mage::getResourceModel('catalog/category'), 'getProductsPosition')) {
+            $category = new Varien_Object(array('id'=>Mage::registry('current_category')->getId()));
+			$positions = array_reverse(array_keys(Mage::getResourceModel('catalog/category')->getProductsPosition($category)));
 		} else{
 			return false;
 		}
-		$cpk = @array_search($prodId, $positions);
+		$cpk = @array_search($product_id, $positions);
 		$slice = array_reverse(array_slice($positions, 0, $cpk));
 		foreach ($slice as $productId) {
 			$product = Mage::getModel('catalog/product')
@@ -29,14 +30,15 @@ class Heaven7_Previousnext_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function getNextProduct()
 	{
-		$prodId = Mage::registry('current_product')->getId();
-		$positions = Mage::getSingleton('core/session')->getInchooFilteredCategoryProductCollection();
-		if (!$positions && method_exists(Mage::registry('current_category'), 'getProductsPosition')) {
-			$positions = array_reverse(array_keys(Mage::registry('current_category')->getProductsPosition()));
-		} else{
-			return false;
-		}
-		$cpk = @array_search($prodId, $positions);
+		$product_id = Mage::registry('current_product')->getId();
+        if (method_exists(Mage::registry('current_category'), 'getId')
+                && method_exists(Mage::getResourceModel('catalog/category'), 'getProductsPosition')) {
+            $category = new Varien_Object(array('id'=>Mage::registry('current_category')->getId()));
+            $positions = array_reverse(array_keys(Mage::getResourceModel('catalog/category')->getProductsPosition($category)));
+        } else{
+            return false;
+        }
+		$cpk = @array_search($product_id, $positions);
 		$slice = array_slice($positions, $cpk + 1, count($positions));
 		foreach ($slice as $productId) {
 			$product = Mage::getModel('catalog/product')
