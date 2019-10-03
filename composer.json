@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/PreviousNext",
+    "name": "OpenMageModuleFostering\/PreviousNext",
     "type": "magento-module",
     "license": "OSL",
     "homepage": "",
     "description": "Previous Next Product",
     "authors": [
-    {
-        "name": "Feh\u00e9rdi L\u00f3r\u00e1nd",
-        "email": "feherdi.lorand@gmail.com"
-    }
-],
+        {
+            "name": "Feh\u00e9rdi L\u00f3r\u00e1nd",
+            "email": "feherdi.lorand@gmail.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
